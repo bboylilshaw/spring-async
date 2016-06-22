@@ -1,0 +1,47 @@
+buildscript {
+  repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.M2")
+  }
+}
+
+group 'org.jasonxiao'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+  baseName = 'spring-async'
+  version = '1.0.0-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  jcenter()
+  maven { url "http://repo.spring.io/snapshot" }
+  maven { url "http://repo.spring.io/milestone" }
+}
+
+ext {
+  powermockVersion = '1.6.4'
+}
+
+dependencies {
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
+
+  runtime group: 'org.hsqldb', name: 'hsqldb'
+
+  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+  testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: powermockVersion
+  testCompile group: 'org.powermock', name: 'powermock-api-mockito', version: powermockVersion
+}
