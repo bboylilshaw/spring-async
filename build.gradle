@@ -1,11 +1,14 @@
 buildscript {
+  ext {
+    springBootVersion = '1.4.0.RC1'
+  }
   repositories {
     jcenter()
-    maven { url "http://repo.spring.io/snapshot" }
-    maven { url "http://repo.spring.io/milestone" }
+    maven { url 'https://repo.spring.io/libs-snapshot' }
+    maven { url 'https://repo.spring.io/libs-milestone' }
   }
   dependencies {
-    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.M2")
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
   }
 }
 
@@ -26,8 +29,8 @@ targetCompatibility = 1.8
 
 repositories {
   jcenter()
-  maven { url "http://repo.spring.io/snapshot" }
-  maven { url "http://repo.spring.io/milestone" }
+  maven { url 'https://repo.spring.io/libs-snapshot' }
+  maven { url 'https://repo.spring.io/libs-milestone' }
 }
 
 ext {
@@ -35,13 +38,19 @@ ext {
 }
 
 dependencies {
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
+  compile 'org.springframework.boot:spring-boot-devtools'
+  compile 'org.springframework.boot:spring-boot-starter-web'
+  compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+  compile 'org.springframework.boot:spring-boot-starter-data-redis'
 
-  runtime group: 'org.hsqldb', name: 'hsqldb'
+  runtime 'org.hsqldb:hsqldb'
 
-  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-  testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: powermockVersion
-  testCompile group: 'org.powermock', name: 'powermock-api-mockito', version: powermockVersion
+  testCompile 'org.springframework.boot:spring-boot-starter-test'
+//  testCompile "org.powermock:powermock-module-junit4:${powermockVersion}"
+//  testCompile "org.powermock:powermock-api-mockito:${powermockVersion}"
+}
+
+bootRepackage {
+  // exclude devtools jar when packaging in production mode
+  excludeDevtools = true
 }

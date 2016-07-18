@@ -1,20 +1,22 @@
 package org.jasonxiao.demo.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * Created by Jason on 4/30/16.
  */
 public class Asset {
+
     private String id;
+    @NotBlank
     private String name;
-    private String workspaceId;
 
     public Asset() {
     }
 
-    public Asset(String id, String name, String workspaceId) {
+    public Asset(String id, String name) {
         this.id = id;
         this.name = name;
-        this.workspaceId = workspaceId;
     }
 
     public String getId() {
@@ -33,11 +35,4 @@ public class Asset {
         this.name = name;
     }
 
-    public String getWorkspaceId() {
-        return workspaceId;
-    }
-
-    public void setWorkspaceId(String workspaceId) {
-        this.workspaceId = workspaceId;
-    }
 }

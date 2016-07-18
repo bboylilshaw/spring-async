@@ -1,13 +1,12 @@
 package org.jasonxiao.demo.config;
 
-import org.jasonxiao.demo.exception.GeneralException;
+import org.jasonxiao.demo.exception.GenericException;
 import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.RequestAttributes;
 
-import javax.servlet.RequestDispatcher;
 import java.util.Map;
 
 /**
@@ -22,18 +21,16 @@ public class ErrorConfig {
 
             @Override
             public Map<String, Object> getErrorAttributes(RequestAttributes requestAttributes, boolean includeStackTrace) {
+                System.out.println("get error attributes");
                 Map<String, Object> errorAttributes = super.getErrorAttributes(requestAttributes, includeStackTrace);
-                Object exception = requestAttributes.getAttribute(RequestDispatcher.ERROR_EXCEPTION, RequestAttributes.SCOPE_REQUEST);
-                if (exception != null && exception instanceof Exception) {
-                    if (((Exception) exception).getCause() instanceof GeneralException) {
-                        GeneralException e = (GeneralException) ((Exception) exception).getCause();
-                        errorAttributes.put("code", e.getCode());
-                    }
+                Throwable error = super.getError(requestAttributes);
+                if (error != null && error instanceof GenericException) {
+                    errorAttributes.put("code", ((GenericException) error).getCode());
+                    errorAttributes.put("message", error.getMessage());
                 }
                 return errorAttributes;
             }
 
         };
     }
-
 }

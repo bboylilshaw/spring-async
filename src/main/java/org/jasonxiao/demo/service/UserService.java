@@ -1,24 +1,26 @@
 package org.jasonxiao.demo.service;
 
-import org.jasonxiao.demo.exception.UserNotFoundException;
+import org.jasonxiao.demo.exception.user.UserAlreadyExistException;
+import org.jasonxiao.demo.exception.user.UserNotFoundException;
 import org.jasonxiao.demo.model.User;
 
-import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Jason on 1/10/16.
  */
 public interface UserService {
 
-    Collection<User> findAll();
+    List<User> getAllUsers() throws Exception;
 
-    User findOne(Long id);
+    User getUser(Long id);
 
-    User create(User user);
+    User create(User user) throws UserAlreadyExistException;
 
     User update(Long id, User user) throws UserNotFoundException;
 
-    void delete(Long id);
+    void delete(Long id) throws UserNotFoundException;
 
     void evictCache();
 

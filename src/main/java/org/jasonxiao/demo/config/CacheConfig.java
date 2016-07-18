@@ -1,5 +1,6 @@
 package org.jasonxiao.demo.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
@@ -15,11 +16,18 @@ import org.springframework.data.redis.core.RedisTemplate;
 @EnableCaching
 public class CacheConfig extends CachingConfigurerSupport {
 
-    @Value("${redis.host}")
-    private String host;
+    private final String host;
+    private final int port;
+    private final long cacheExpirationTime;
 
-    @Value("${redis.port}")
-    private int port;
+    @Autowired
+    public CacheConfig(@Value("${redis.host}") String host,
+                       @Value("${redis.port}") int port,
+                       @Value("${cache.expiration}") long cacheExpirationTime) {
+        this.host = host;
+        this.port = port;
+        this.cacheExpirationTime = cacheExpirationTime;
+    }
 
     @Bean
     public JedisConnectionFactory redisConnectionFactory() {
@@ -39,9 +47,8 @@ public class CacheConfig extends CachingConfigurerSupport {
     @Bean
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
         RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
-
         cacheManager.setTransactionAware(true);
-        cacheManager.setDefaultExpiration(60);
+        cacheManager.setDefaultExpiration(cacheExpirationTime);
         return cacheManager;
     }
 }

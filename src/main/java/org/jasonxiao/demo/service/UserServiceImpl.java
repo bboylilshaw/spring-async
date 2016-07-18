@@ -1,7 +1,7 @@
 package org.jasonxiao.demo.service;
 
-import org.jasonxiao.demo.exception.ErrorType;
-import org.jasonxiao.demo.exception.UserNotFoundException;
+import org.jasonxiao.demo.exception.user.UserAlreadyExistException;
+import org.jasonxiao.demo.exception.user.UserNotFoundException;
 import org.jasonxiao.demo.model.User;
 import org.jasonxiao.demo.repository.UserRepository;
 import org.slf4j.Logger;
@@ -16,7 +16,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Jason on 1/10/16.
@@ -25,27 +26,34 @@ import java.util.Collection;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class UserServiceImpl implements UserService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     @Cacheable(value = "all_users")
-    public Collection<User> findAll() {
+    public List<User> getAllUsers() {
+        logger.info("Start to fetch users from repository");
+//        throw new Exception("Some Error");
         return userRepository.findAll();
     }
 
     @Override
     @Cacheable(value = "user")
-    public User findOne(Long id) {
+    public User getUser(Long id) {
+        logger.info("Start to fetch user with id: {}", id);
         return userRepository.findOne(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public User create(User user) {
-        LOGGER.info("creating user");
+    public User create(User user) throws UserAlreadyExistException {
+        logger.info("Start to create user {}", user.toString());
         return userRepository.save(user);
     }
 
@@ -75,6 +83,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @CacheEvict(cacheNames = {"all_users", "user"}, allEntries = true)
     public void evictCache() {
-        LOGGER.info("Evicted all cache!");
+        logger.info("Evicted all cache!");
     }
 }

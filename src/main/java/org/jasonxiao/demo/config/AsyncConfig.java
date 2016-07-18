@@ -22,7 +22,7 @@ public class AsyncConfig extends AsyncConfigurerSupport {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(5);
         taskExecutor.setMaxPoolSize(10);
-        taskExecutor.setQueueCapacity(25);
+        taskExecutor.setQueueCapacity(Integer.MAX_VALUE);
 
         return taskExecutor;
     }

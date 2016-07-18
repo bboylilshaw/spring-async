@@ -3,16 +3,16 @@ package org.jasonxiao.demo.exception;
 /**
  * Created by Jason on 2/5/16.
  */
-public class GeneralException extends Exception {
+public class GenericException extends Exception {
 
-    protected int code;
+    protected int code = 9999;
 
-    public GeneralException(int code) {
-        super("General Error");
+    public GenericException(int code) {
+        super("Generic Error");
         this.code = code;
     }
 
-    public GeneralException(int code, String message) {
+    public GenericException(int code, String message) {
         super(message);
         this.code = code;
     }

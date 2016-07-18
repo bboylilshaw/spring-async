@@ -3,27 +3,33 @@ package org.jasonxiao.demo.exception;
 
 public enum ErrorType {
 
-    USER_NOT_FOUND(40401, "User is not found");
+    /*
+     * User errors
+     */
+    USER_NOT_FOUND(1001, "User is not found"),
+    USER_ALREADY_EXIST(1002, "User already exist");
 
-    private final int errorCode;
-    private final String errorMessage;
+    private final int code;
+    private final String defaultMsg;
 
-    ErrorType(int errorCode, String errorMessage) {
-        this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
+    ErrorType(int code, String defaultMsg) {
+        this.code = code;
+        this.defaultMsg = defaultMsg;
     }
 
-    public int getErrorCode() {
-        return errorCode;
+    public int getCode() {
+        return code;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getDefaultMsg() {
+        return defaultMsg;
     }
 
     @Override
     public String toString() {
-        return String.valueOf(this.errorCode) + ":" + this.errorMessage;
+        return "ErrorType{" +
+                "code=" + code +
+                ", defaultMsg='" + defaultMsg + '\'' +
+                '}';
     }
-
 }

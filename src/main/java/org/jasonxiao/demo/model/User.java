@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -18,6 +19,7 @@ public class User implements Serializable {
     private Long id;
 
     @NotBlank
+    @Size(min = 1, max = 100)
     private String name;
 
     public Long getId() {
@@ -34,5 +36,13 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "User [" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ']';
     }
 }
