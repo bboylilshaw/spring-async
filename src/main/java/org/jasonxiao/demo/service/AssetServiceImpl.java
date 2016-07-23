@@ -12,7 +12,6 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
 /**
  * Created by Jason on 2/1/16.
