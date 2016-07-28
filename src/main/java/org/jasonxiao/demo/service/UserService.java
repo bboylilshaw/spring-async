@@ -14,7 +14,7 @@ public interface UserService {
 
     List<User> getAllUsers() throws Exception;
 
-    User getUser(Long id);
+    User getUser(Long id) throws UserNotFoundException;
 
     User create(User user) throws UserAlreadyExistException;
 

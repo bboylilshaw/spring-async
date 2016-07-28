@@ -45,8 +45,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Cacheable(value = "user")
-    public User getUser(Long id) {
+    public User getUser(Long id) throws UserNotFoundException {
         logger.info("Start to fetch user with id: {}", id);
+        if (!userRepository.exists(id)) {
+            throw new UserNotFoundException();
+        }
         return userRepository.findOne(id);
     }
 

@@ -34,7 +34,7 @@ repositories {
 }
 
 ext {
-  powermockVersion = '1.6.4'
+  jacksonVersion = '2.7.5'
 }
 
 configurations {
@@ -48,12 +48,11 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
   compile 'org.springframework.boot:spring-boot-starter-data-redis'
   compile 'org.springframework.boot:spring-boot-starter-cache'
+  compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
 
   runtime 'org.hsqldb:hsqldb'
 
   testCompile 'org.springframework.boot:spring-boot-starter-test'
-//  testCompile "org.powermock:powermock-module-junit4:${powermockVersion}"
-//  testCompile "org.powermock:powermock-api-mockito:${powermockVersion}"
 }
 
 bootRepackage {

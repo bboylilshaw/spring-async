@@ -65,7 +65,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
-    public ResponseEntity<User> getUser(@PathVariable("userId") Long userId) {
+    public ResponseEntity<User> getUser(@PathVariable("userId") Long userId) throws UserNotFoundException {
         logger.info("Get user...");
         User user = userService.getUser(userId);
         return ResponseEntity.ok(user);
