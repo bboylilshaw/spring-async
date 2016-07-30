@@ -1,14 +1,21 @@
 package org.jasonxiao.demo.exception;
 
+import org.jasonxiao.demo.exception.user.UserNotFoundException;
+
 /**
  * Created by Jason on 2/5/16.
  */
 public class GenericException extends Exception {
 
-    protected int code = 9999;
+    private int code;
+
+    public GenericException() {
+        super("Generic Exception");
+        this.code = -1;
+    }
 
     public GenericException(int code) {
-        super("Generic Error");
+        super("Generic Exception");
         this.code = code;
     }
 
@@ -19,5 +26,10 @@ public class GenericException extends Exception {
 
     public int getCode() {
         return code;
+    }
+
+    public static void main(String[] args) {
+        UserNotFoundException e = new UserNotFoundException();
+        System.out.println(e.getCode());
     }
 }

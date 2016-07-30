@@ -4,7 +4,7 @@ package org.jasonxiao.demo.exception;
 public enum ErrorType {
 
     /*
-     * User errors
+     * User errors, start from 1001 to 1999, 4 digits
      */
     USER_NOT_FOUND(1001, "User is not found"),
     USER_ALREADY_EXIST(1002, "User already exist");
