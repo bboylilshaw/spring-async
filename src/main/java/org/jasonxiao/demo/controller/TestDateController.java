@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.ZonedDateTime;
 
 /**
- * Created by Jason on 7/24/16.
+ * @author Jason Xiao
  */
 @RestController
 public class TestDateController {

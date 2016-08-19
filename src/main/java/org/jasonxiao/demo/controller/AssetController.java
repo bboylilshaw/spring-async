@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 
 /**
- * Created by Jason on 2/1/16.
+ * @author Jason Xiao
  */
-
 @RestController
 @RequestMapping("/api")
 public class AssetController {

@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
- * Created by Jason on 1/10/16.
+ * @author Jason Xiao
  */
 @Entity
 public class User implements Serializable {

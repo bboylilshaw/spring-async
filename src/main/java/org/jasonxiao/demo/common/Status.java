@@ -1,7 +1,7 @@
 package org.jasonxiao.demo.common;
 
 /**
- * Created by Jason on 4/29/16.
+ * @author Jason Xiao
  */
 public enum  Status {
     SUCCESS,

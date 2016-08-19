@@ -1,11 +1,9 @@
 buildscript {
   ext {
-    springBootVersion = '1.4.0.RC1'
+    springBootVersion = '1.4.0.RELEASE'
   }
   repositories {
     jcenter()
-    maven { url 'https://repo.spring.io/libs-snapshot' }
-    maven { url 'https://repo.spring.io/libs-milestone' }
   }
   dependencies {
     classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
@@ -29,12 +27,6 @@ targetCompatibility = 1.8
 
 repositories {
   jcenter()
-  maven { url 'https://repo.spring.io/libs-snapshot' }
-  maven { url 'https://repo.spring.io/libs-milestone' }
-}
-
-ext {
-  jacksonVersion = '2.7.5'
 }
 
 dependencies {
@@ -43,9 +35,9 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
   compile 'org.springframework.boot:spring-boot-starter-data-redis'
   compile 'org.springframework.boot:spring-boot-starter-cache'
-  compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
+  compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 
-  runtime 'org.hsqldb:hsqldb'
+  runtime 'com.h2database:h2'
 
   testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

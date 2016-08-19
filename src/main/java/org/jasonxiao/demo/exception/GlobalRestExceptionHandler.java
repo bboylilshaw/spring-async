@@ -1,6 +1,5 @@
 package org.jasonxiao.demo.exception;
 
-
 import org.jasonxiao.demo.exception.user.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by Jason on 7/28/16.
+ * @author Jason Xiao
  */
 @RestControllerAdvice
 public class GlobalRestExceptionHandler {

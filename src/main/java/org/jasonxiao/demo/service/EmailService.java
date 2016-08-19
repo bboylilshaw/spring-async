@@ -3,7 +3,7 @@ package org.jasonxiao.demo.service;
 import java.util.concurrent.Future;
 
 /**
- * Created by Jason on 1/11/16.
+ * @author Jason Xiao
  */
 public interface EmailService {
 

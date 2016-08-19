@@ -3,7 +3,7 @@ package org.jasonxiao.demo.model;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
- * Created by Jason on 4/30/16.
+ * @author Jason Xiao
  */
 public class Asset {
 

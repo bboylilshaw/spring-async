@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.Future;
 
 /**
- * Created by Jason on 1/11/16.
+ * @author Jason Xiao
  */
 @Service
 public class EmailServiceImpl implements EmailService {

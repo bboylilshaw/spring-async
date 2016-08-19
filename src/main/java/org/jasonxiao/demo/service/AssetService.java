@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * Created by Jason on 2/1/16.
+ * @author Jason Xiao
  */
 public interface AssetService {
 

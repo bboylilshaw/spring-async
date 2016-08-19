@@ -4,7 +4,7 @@ import org.jasonxiao.demo.exception.ErrorType;
 import org.jasonxiao.demo.exception.GenericException;
 
 /**
- * Created by Jason on 2/3/16.
+ * @author Jason Xiao
  */
 public class UserNotFoundException extends GenericException {
 

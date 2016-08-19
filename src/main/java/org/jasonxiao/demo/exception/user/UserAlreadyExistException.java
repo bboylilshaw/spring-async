@@ -4,7 +4,7 @@ import org.jasonxiao.demo.exception.ErrorType;
 import org.jasonxiao.demo.exception.GenericException;
 
 /**
- * Created by Jason on 7/17/16.
+ * @author Jason Xiao
  */
 public class UserAlreadyExistException extends GenericException {
 

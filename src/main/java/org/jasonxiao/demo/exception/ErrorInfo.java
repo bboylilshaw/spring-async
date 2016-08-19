@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 /**
- * Created by Jason on 7/28/16.
+ * @author Jason Xiao
  */
 public class ErrorInfo {
 

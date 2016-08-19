@@ -1,9 +1,7 @@
 package org.jasonxiao.demo.exception;
 
-import org.jasonxiao.demo.exception.user.UserNotFoundException;
-
 /**
- * Created by Jason on 2/5/16.
+ * @author Jason Xiao
  */
 public class GenericException extends Exception {
 
