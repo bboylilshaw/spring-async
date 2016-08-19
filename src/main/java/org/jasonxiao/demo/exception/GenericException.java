@@ -28,8 +28,4 @@ public class GenericException extends Exception {
         return code;
     }
 
-    public static void main(String[] args) {
-        UserNotFoundException e = new UserNotFoundException();
-        System.out.println(e.getCode());
-    }
 }

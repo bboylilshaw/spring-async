@@ -37,14 +37,9 @@ ext {
   jacksonVersion = '2.7.5'
 }
 
-configurations {
-  compile.exclude module: 'spring-boot-starter-tomcat'
-}
-
 dependencies {
   compile 'org.springframework.boot:spring-boot-devtools'
   compile 'org.springframework.boot:spring-boot-starter-web'
-  compile 'org.springframework.boot:spring-boot-starter-undertow'
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
   compile 'org.springframework.boot:spring-boot-starter-data-redis'
   compile 'org.springframework.boot:spring-boot-starter-cache'
@@ -58,4 +53,8 @@ dependencies {
 bootRepackage {
   // exclude devtools jar when packaging in production mode
   excludeDevtools = true
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '3.0'
 }
